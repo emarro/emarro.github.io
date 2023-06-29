@@ -5,7 +5,7 @@ math: true
 ---
 # The Power of Data
 
-I'm sure I don't need to convince any reader of this about the unreasonable effectivness of data (cite?). 
+I'm sure I don't need to convince any reader of this about the unreasonable effectivness of data. 
 The more good quality data you have, the better your discriminator is at classifying or the richer the examples
 your generative model is able to provide. Yet for as good as a model may get, we are fundamentally limited by the
 types of data we use to train a model. 
