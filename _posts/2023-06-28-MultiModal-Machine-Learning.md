@@ -1,6 +1,6 @@
 ---
 title: MultiModal Machine Learning
-author: Edgar
+author: emarro
 math: true
 ---
 # The Power of Data
