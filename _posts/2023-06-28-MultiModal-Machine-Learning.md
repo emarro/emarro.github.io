@@ -35,6 +35,30 @@ a guess or the better representation we can generate about something.
 
 ## Working with Multiple Modalities
 
+This is where things starting getting a bit trickier. I can always say "Adding in more good quality is a good thing", but this ignores
+the fact that actually dealing with multiple different types of data is difficult. How do you correctly combine images and text? There 
+are more than a few reasonable ways to do it, but there are always trade-offs. Can you fit both your data and your model in memory,
+do you process them the inputs jointly, or seperatly and then combine them later, is adding another modality even worth it or would
+it be a lot more compute for marginal performance gains? It's case by case, but there are some general patterns than can help.
+
+### Encoders
+One of the more straightforward ways to handle multiple modalities at once it just have an encoder for each seperate modality and 
+to have some way of combining them. For exampe, if one of my input modalities is text, I could generate an $$n$$ dimensional embedding for just the given
+text, $$e_t \in \mathbb{R}^{n} $$. If my other input modality was an image we can do the same thing and generate an embedding $$e_v \in \mathbb{R}^{m}$$ 
+using any number of possible models. And now we have a decision to make. We ostensibly want some global embedding $$e_g \in \mathbb{R}^{g}$$ that we can 
+use as an input to the model that solves the task we care about, but how do we generate $e_g$? Let's state this a little more formally, we want some 
+combing function $f()$ that takes as input each invidiual modality we have, and outputs a single global embedding we can mess with $e_g$. So the 
+question now becomes, what the heck should $f()$ be?
+
+#### A concatenation
+
+#### Addition
+
+#### Something Else
+
+
+
+
 TODO:
     1. How to encode each modality
     2. How to combine the encodings
