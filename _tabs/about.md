@@ -4,8 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Hi, this page is full of the inane ramblings of me, a grad student in CS who does work between machine learning, genetics, and
-computational biology. I use this site to update notes about methods or papers I find cool, and to archive some of my thoughts about previous projects. I keep it public in case anyone else finds this interesting or is looking for another perspective about the stuff
-that I place here.
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+I'm currently a grad student in CS working somewhere between machine learning and genetics. During my undergrad I double majored in computer science and biochemistry and I've bounced around a number of projects invovling differential gene expression, rna sequencing, and using machine learninig in biological settings such as speeding up genotype imputation. This website serves as both a place for me to jot down ideas I've found cool, write ups about key points from previous projects, and as templates for me to fill in as I learn more stuff. It's public in the hope that if someone finds it, they might find it useful or at least partially entertaining. One self imposed restriction here is that I intentionally try to keep explanaints at a high enough level that a a non-expert (an undergrad student in a differnt field for example) might still be able to follow along, as a challenge to myself. 
+
+![Upper body picture of the author](/assets/img/headshot_cropped.jpg)
+_Putting a face to the name._
