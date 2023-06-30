@@ -2,7 +2,7 @@
 title: Matrix Structures
 author: emarro
 math: true
-tags: Linear Algebra, Matrix Structure
+tags: Linear Algebra Matrix Structure
 ---
 
 

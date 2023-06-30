@@ -2,7 +2,7 @@
 title: Multi-Modal Machine Learning
 author: emarro
 math: true
-tags: Machine Learning, Multi-Modal
+tags: Machine Learning Multi-Modal
 ---
 # The Power of Data
 
