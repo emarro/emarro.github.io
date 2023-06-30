@@ -5,10 +5,10 @@ math: true
 ---
 # The Power of Data
 
-I'm sure I don't need to convince any reader of this about the unreasonable effectivness of data. 
+The abundance of good quality data is one of the main reasons machine learning methods have been able to get so good at a number of tasks.
 The more good quality data you have, the better your discriminator is at classifying or the richer the examples
 your generative model is able to provide. Yet for as good as a model may get, we are fundamentally limited by the
-types of data we use to train a model. 
+_types_ of data we use to train a model. 
 
 Let's do a little thought experiment, let's say I'm training a text classifer that is given a sentence, and returns
 whether or not the person saying that sentence meant for the sentence to be sarcastic. So for example, our input this
