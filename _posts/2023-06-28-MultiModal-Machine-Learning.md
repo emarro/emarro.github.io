@@ -71,4 +71,30 @@ Once we have the global embedding, it becomes a standard ML problem. We have a f
 
 ## The types of things we can do
 
-One of the more common multi modal settings is in image captioning. Given an image then generate a caption, or given a caption generate a possible image seem like natural tasks to propose but they can be fairly difficult. This isn't the only tasks these are used for though, I did some work early on multi modal methods for medical data. Consider having access to patients blood labs, ekg data, and doctors notes for each patient. Looking at each modality individually may let you do some tasks well, but given how complicated the human body can be looking at only one aspect of data usually gives you an incomplete view of the patient. Consider for example that we are trying to predict what infection a patient has contracted. If we have only blood lab data, it may be obvious that the patient has an infection, but the specific infection they have may be difficult if not impossible to predict from just the blood labs. Likewise if we have the patients medical history on file, we can see what infections they may previously have had and maybe if they have a predisposition to a certain type of infection, but if we don't have access to current blood labs, we won't know that the patient is currently suffering form an infection. This is a bit of a contrived example, but the processing of differnt types of modalites for certain tasks has potential to greatly increase what our models are able to do. 
+ Consider the follwing task: we have access to a patients blood labs, ekg data, and doctors notes and we want to predict what type of infection a patient has, if any. Looking at each modality individually may let you do this task well, but given how complicated the human body can be, looking at only one aspect of data may give you an incomplete view of the patient. If we have only blood lab data, it may be obvious that the patient has an infection, but the specific infection would be difficult if not impossible to identify. Likewise, if we have the patients medical history on file, we can see what infections they may previously have had and maybe if they have a predisposition to a certain type of infection, but if we don't have access to current blood labs, we won't know that the patient is currently suffering from an infection. This is a bit of a contrived example, but one of the early projects of my PhD focused on this.
+ > How can we leverage multiple modalities of data to create and train more accurate models?
+
+## An early project
+
+For the project I worked on, we had the following types of medical data:
+1. Time Series Data
+   1. Think like blood sugar, or blood pressure over time, or other things that are likely change on the order of minutes through hours.
+2. Tabular Data
+   1. Think demographic information such as age, height, or information that is otherwise unlikely to change in a single hospital visit.
+3. Text Data
+   1. Think Doctor's and other health care provider information.
+
+Given this data, we we were trying to solve a number of tasks:
+1. What phenotype(s) is the patient presenting (what disease(s) are the presenting)?
+2. Is the pateint likely to be readmitted to the hospital soon?
+3. Given the data from hospital entry to hour $n$, with the patient enter a critical state within the next $x$ hours?
+4. etc
+
+Our main idea going into this work was that we could try to improve upon previous methods by leveraging multiple modalities of data at once, and by training the model on multiple tasks once. As I have alluded to throughout most of this piece, we believed that incorporating multiple types of data at once we might get a more holistic view of our input, in this case a patient. 
+
+### Takeaways From the Project
+So the TL;DR for this project in my opinion would be:
+1. Multiple types of modalities _may_ help, it depends on your task
+2. Processing multiple types of modalities at once can be a bit of a pain
+   1. For example, aligning the time stamps of each of the modalities to ensure we never had future data took a bit of effort.
+   2. Also, just _mapping_ different types of data to the same patient was sometimes difficult or even impossible due to incomplete or misentered entries.
