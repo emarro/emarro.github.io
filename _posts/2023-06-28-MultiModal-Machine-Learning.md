@@ -1,5 +1,5 @@
 ---
-title: MultiModal Machine Learning
+title: Multi-Modal Machine Learning
 author: emarro
 math: true
 tags: Machine Learning, Multi-Modal
