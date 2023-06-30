@@ -2,11 +2,12 @@
 title: Matrix Structures
 author: emarro
 math: true
+tags: Linear Algebra, Matrix Structure
 ---
 
 
 I've been re-reading some old course notes and books from a previous course I took that left an impression on me,
-this is the first in a series of write-ups is my way of reviewing some of the key points of that course.
+this is the first in a series of write-ups and is my way of reviewing some of the key points of that course.
 > This post assumes a background of some introductory Linear Algebra
 {: .prompt-warning}
 
@@ -41,7 +42,7 @@ This is really a fundamental aspect of computer science and applied mathematics,
 
 ## When __Not__ to Take the Inverse
 ### A Triangular Example
-Let's consider a binary square lower triangluar matrix,
+Let's consider a binary square lower triangular matrix,
 $$
 A = \begin{bmatrix} 1& 0& 0\\
                     1& 1& 0\\
@@ -91,7 +92,7 @@ $$
 {: .prompt-tip}
 
 ### Takeaways
-Solving a system of linear equations where $A$ is a binary triangular matrix can be done much faster than for a many other classes of $A$. By taking advantage of the structure of $A$, we can formulate it as a vector addition (well, subtraction really) and avoid having to run some other, costlier algorithm. This includes taking the inverse, while taking the inverse gives us the exact same answer and even shows the same structure we leveraged, we can never beat the previous method since taking the inverse of a matrix is much more costly ($O(n^3)$-ish). For large $n$, this would obviously lead to a massive difference in run time. 
+Solving a system of linear equations where $A$ is a binary triangular matrix can be done much faster than for many other classes of $A$. By taking advantage of the structure of $A$, we can formulate it as a vector addition (well, subtraction really) and avoid having to run some other, costlier algorithm. This includes taking the inverse, while taking the inverse gives us the exact same answer and even shows the same structure we leveraged, we can never beat the previous method since taking the inverse of a matrix is much more costly ($O(n^3)$-ish). For large $n$, this would obviously lead to a massive difference in run time. 
 I hope this illustrates just how important the structure of the matrix can be when trying to solve a problem with it. 
 > While we looked at the extreme case where $A$ was a binary triangular matrix, we can also find fast algorithms to solve $Ax = b$ where $A$ is a real-valued triangular matrix. This implies that if we can find a fast way to transform a matrix into a triangular matrix, we can solve $Ax = b$ quickly. We'll see this come into effect when we talk about matrix decompositions.
 {: .prompt-info}
@@ -101,19 +102,19 @@ And one thing I didn't draw attention to but that I also want to emphasis:
 > $A^{-1}$ was no longer a triangular matrix, the inverse has a different structure
 {: .prompt-danger}
 
-While for this specific example $A^{-1}$ is a banded matrix and therefore still has structure we could exploit, this is not always the case. Taking the inverse of a matrix destroys whatever structure it originally had! If we want to find a fast algorithm to solve a given problem, we have to be very concious of the structure of our matrix and so we should also be very careful when taking the inverse of a matrix, as that may become the rate limiting step in our algorithm.
+While for this specific example $A^{-1}$ is a banded matrix and therefore still has structure we could exploit, this is not always the case. Taking the inverse of a matrix destroys whatever structure it originally had! If we want to find a fast algorithm to solve a given problem, we have to be very conscious of the structure of our matrix and so we should also be very careful when taking the inverse of a matrix, as that may become the rate limiting step in our algorithm.
 
 ## Future Topics
 I just wanted to take today to write about the importance of matrix structure, as understanding the consequences of a matrix's structure is vital to understand how to solve it quickly. In the future, I want to write a bit about different methods for solving $$ Ax = b$$ and even $$\|{Ax - b}\|$$. I include a few of those topics below, and I'll often be following [Matrix Computation by Golub and Van Loan](https://books.google.com/books?hl=en&lr=&id=5U-l8U3P-VUC&oi=fnd&pg=PP1&dq=golub+van+loan&ots=7-JDKiVT7s&sig=6t-DebSKhXrn9G1nCgfAuXpzpRw#v=onepage&q&f=false) since I think that book is fantastic.
 ### Matrix Decompositions
-Sometimes, a matrix is structured in such a way that we can decompose it into a combination of other matrices and/or vectors. These decompostions often come with advantages, where after we decompose a matrix we have a fast algorithm for solving the problem, so if we can decompose a matrix quickly we can also solve the problem quickly.
-1. Lower-Upper (LU) decomposition (sometimes called LR decomposition) decomposes a matrix in a lower triangular matrix $L$ and an upper triangular matrix $U$. This decomposition is actually a common way for computer to solve a system of linear equations. 
+Sometimes, a matrix is structured in such a way that we can decompose it into a combination of other matrices and/or vectors. These decompositions often come with advantages, where after we decompose a matrix we have a fast algorithm for solving the problem, so if we can decompose a matrix quickly we can also solve the problem quickly.
+1. Lower-Upper (LU) decomposition (sometimes called LR decomposition) decomposes a matrix in a lower triangular matrix $L$ and an upper triangular matrix $U$. This decomposition is actually a common way for computers to solve a system of linear equations. 
 2. Cholesky Decomp - If $A$ is positive-definite, the Cholesky decomp is kind of like a way faster version of the LU decomp and so admits even faster solutions to $Ax = b$
-4. Schur Decomp - Takes a square $A$ and is often used to find the eigenvlues of $A$.
+4. Schur Decomp - Takes a square $A$ and is often used to find the eigenvalues of $A$.
 5. Singular Value Decomposition - Can be used to to find the singular values (i.e the root of the eigenvalues, $\lambda^{\frac{1}{2}}$) of $A \in \mathbb{C}^{m \times n}$.
-### Methods for Sparse Matrixes
+### Methods for Sparse Matrices
 What if most of the entries in $A$ are $0$? Can we take advantage of that to speed up computations?
 ### Methods for Overdetermined/Underdetermined systems
 If we have multiple valid solutions/no solutions, what do we do?
 ### Iterative Methods
-Mainly focusing on Krylov subspace methods, there are ways to solve problems with absolutley massive matricies where we can get very close approximations fairly quickly in instances where direct methods are very expensive to run if they run at all.
+Mainly focusing on Krylov subspace methods, there are ways to solve problems with massive matrices where we can get very close approximations fairly quickly in instances where direct methods are very expensive to run if they run at all.
