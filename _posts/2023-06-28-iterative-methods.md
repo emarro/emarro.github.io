@@ -26,7 +26,7 @@ We have a system of linear equations $Ax = b$, where we want to solve for $x$. H
 
 Maybe we can find the inverse of $A^{-1}$ then $x = A^{-1}b$, or maybe we can run an algorithm like Gaussian Elimination to
 find $x$. While these methods are sometimes correct, this was really a trick question since I told you nothing about $A$.
-1. What shape is $A$ 
+1. What shape is $A$? 
 2. Is $$ A \in \mathbb{Z}^{n \times m}$$? 
 3. Is $$A \in \mathbb{R}^{n \times m}$$?. 
 4. Is $$A$$ even invertible? 
