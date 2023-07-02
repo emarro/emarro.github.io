@@ -100,12 +100,38 @@ I hope this illustrates just how important the structure of the matrix, if we un
 > While we looked at a contrived example where $A$ was a binary triangular matrix, we can also find a similar fast algorithm to solve $Ax = b$ where $A$ is a _real-valued_ triangular matrix. This implies that if we can find a fast way to transform a matrix into a triangular matrix, we can solve $Ax = b$ quickly. We'll see examples of this when we talk about matrix decompositions in the future.
 {: .prompt-info}
 
-#### The Dangers of the Inverse
+#### Losing the Structure
 And one thing I didn't draw attention to but that I also want to emphasis:
 > $A^{-1}$ was no longer a triangular matrix, the inverse has a different structure
 {: .prompt-danger}
 
-While for this specific example $A^{-1}$ is a banded matrix and therefore still has structure we could exploit, this is not always the case. Taking the inverse of a matrix destroys whatever structure it originally had! If we want to find a fast algorithm to solve a given problem, we have to be very conscious of the structure of our matrix and so we should also be very careful when taking the inverse of a matrix, as that may become the rate limiting step in our algorithm.
+While for this specific example $A^{-1}$ is a banded matrix and therefore still has structure we could exploit, there may be differences in the properties of $A$ and $A^{-1}$ that would make working with $A^{-1}$ significantly more difficult. Taking the inverse of a matrix can introduce pratical problems! For example, if $A$ is sparse, $A^{1}$ may not necessarily be sparse and so we might have trouble just storing $A^{-1}$, let alone doing any computations with it. 
+
+Consider the following matrix and it's inverse:
+
+$$
+A = 
+\begin{bmatrix}
+1& 0& 0& 0& 0& \\
+1& 1& 0& 0& 0& \\
+0& 1& 1& 0& 0& \\
+0& 0& 1& 1& 0& \\
+0& 0& 0& 1& 1& \\
+\end{bmatrix}
+
+A^{-1} = 
+\begin{bmatrix}
+1& 0& 0& 0& 0& \\
+-1& 1& 0& 0& 0& \\
+1& -1& 1& 0& 0& \\
+-1& 1& -1& 1& 0& \\
+1& -1& 1& -1& 1& \\
+\end{bmatrix}
+$$
+
+The matrix $A$ would be a fairly straight forward one to solve directly and only has 9 non-zero entries, whereas it's inverse has more non-zero entries ($15$). If we were working with large $n$ and could only work on $A$ because it was sparse, it is not necessarily guaranteed that $A^{-1}$ is also sparse and so we may not even be able to perform any operations with it. Even through in theory the answers are the same, the different practical considerations may cause significant issues if we try to work with $A^{-1}$ without some consideration as to whether not it is a good idea.
+
+Taking the inverse of a matrix changes the structure of the matrix, and so we have to be very careful about why we are doing so!
 
 ## Future Topics
 I just wanted to take today to write about the importance of matrix structure, as understanding the consequences of a matrix's structure is vital to understand how to solve it quickly. In the future, I want to write a bit about different methods for solving $$ Ax = b$$ and even $$\|{Ax - b}\|$$. I include a few of those topics below, and I'll often be following [Matrix Computation by Golub and Van Loan](https://books.google.com/books?hl=en&lr=&id=5U-l8U3P-VUC&oi=fnd&pg=PP1&dq=golub+van+loan&ots=7-JDKiVT7s&sig=6t-DebSKhXrn9G1nCgfAuXpzpRw#v=onepage&q&f=false) since I think that book is fantastic.
