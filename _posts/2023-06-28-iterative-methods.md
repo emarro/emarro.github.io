@@ -92,9 +92,12 @@ $$
 {: .prompt-tip}
 
 ### Takeaways
-Solving a system of linear equations where $A$ is a binary triangular matrix can be done much faster than for many other classes of $A$. By taking advantage of the structure of $A$, we can formulate it as a vector addition (well, subtraction really) and avoid having to run some other, costlier algorithm. This includes taking the inverse, while taking the inverse gives us the exact same answer and even shows the same structure we leveraged, we can never beat the previous method since taking the inverse of a matrix is much more costly ($O(n^3)$-ish). For large $n$, this would obviously lead to a massive difference in run time. 
-I hope this illustrates just how important the structure of the matrix can be when trying to solve a problem with it. 
-> While we looked at the extreme case where $A$ was a binary triangular matrix, we can also find fast algorithms to solve $Ax = b$ where $A$ is a real-valued triangular matrix. This implies that if we can find a fast way to transform a matrix into a triangular matrix, we can solve $Ax = b$ quickly. We'll see this come into effect when we talk about matrix decompositions.
+Solving a system of linear equations where $A$ is a binary triangular matrix can be done much faster than for many other classes of $A$. By taking advantage of the structure of $A$, we can formulate it as a vector addition (well, subtraction really) and avoid having to run some other, costlier algorithm. 
+
+While taking the inverse would have also been correct here, it would have been strictly worse since it would have been a lot of extra work (roughly $O(n^3)$ more work) to give us a matrix that would allow us to do the computation that we figured out directly.
+For large $n$, this might be the difference between getting and answer or failing to compute it all together. 
+I hope this illustrates just how important the structure of the matrix, if we understand the structure of a matrix we may be able to come up with a solution that is a lot cheaper and faster than the blunt way of just taking the inverse. 
+> While we looked at a contrived example where $A$ was a binary triangular matrix, we can also find a similar fast algorithm to solve $Ax = b$ where $A$ is a _real-valued_ triangular matrix. This implies that if we can find a fast way to transform a matrix into a triangular matrix, we can solve $Ax = b$ quickly. We'll see examples of this when we talk about matrix decompositions in the future.
 {: .prompt-info}
 
 #### The Dangers of the Inverse
