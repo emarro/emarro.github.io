@@ -91,6 +91,9 @@ $$
 > We can even formulate this as vector addition, let $b^{\prime} = \[0, b_1, b_2, \ldots, b_{n-1}\]$, then $x = b - b^{\prime}$. If we're clever with our memory and with SIMD instructions, this operation can be done __very__ quickly.  
 {: .prompt-tip}
 
+> This algorithmic pattern to solve lower triangular matricies shows up all the time and is known as __forward substitution__. This particular $A$ (where we only consider 1's) is simpler and faster to solve than the general case, but forward substitution and backward substitution (the upper triangular equivalent) are very useful tools to have for matrix computations.
+{: .prompt-info}
+
 ### Takeaways
 Solving a system of linear equations where $A$ is a binary triangular matrix can be done much faster than for many other classes of $A$. By taking advantage of the structure of $A$, we can formulate it as a vector addition (well, subtraction really) and avoid having to run some other, costlier algorithm. 
 
